@@ -46,7 +46,7 @@ function getMarvelResponse() {
 
 
     function getWikiResponse() {
-        var wikiApi = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='New_England_Patriots'";
+        var wikiApi = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=%Wolverine%";
 
         fetch(wikiApi)
         .then(function(response) {
@@ -57,9 +57,7 @@ function getMarvelResponse() {
         })
     }
 
-    function getGoogleResponse() {
-        var googleApi = ""
-    }
+   
 
   getMarvelResponse();
 
