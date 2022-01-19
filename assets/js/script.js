@@ -1,4 +1,37 @@
-
+$(function() {
+    var availableTags = [
+      "Blade",
+      "Black Panther",
+      "Ant-Man",
+      "The Incredible Hulk",
+      "Captain America",
+      "Nick Fury",
+      "Daredevil",
+      "Gambit",
+      "Spider-Man",
+      "Thor",
+      "Iron Man",
+      "The Thing",
+      "Wolverine",
+      "Storm",
+      "Captain Marvel",
+      "Black Widow",
+      "War Machine",
+      "Groot",
+      "Deadpool",
+      "Cyclops",
+      "Silver SUrfer",
+      "Human Torch",
+      "Nightcrawler",
+      "Punisher",
+      "Invisible Woman",
+      "Rogue",
+      "Professor X"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
 
 
 // function getApi() {
@@ -62,3 +95,4 @@ function getMarvelResponse() {
   getMarvelResponse();
 
   getWikiResponse();
+
