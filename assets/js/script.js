@@ -1,3 +1,5 @@
+wikiContainer = document.getElementById('wikiInfo');
+var wikiResults = [];
 $(function() {
     var availableTags = [
       "Blade",
@@ -76,23 +78,55 @@ function getMarvelResponse() {
             console.log(err);    
         });
     };
+    
+    var xhr = new XMLHttpRequest();
+    
+    var wikiApi = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=%Wolverine%";
 
+    //provide 3 arguments: get/post, url, async true/false
+    xhr.open('GET', wikiApi, true);
+    //upon loading
+    xhr.onload = function() {
+        var data = JSON.parse(this.response);
+        console.log(data);
+        console.log(data.query.pages);
+        //loop thru the titles of each page
+        for (var i in data.query.pages) {
+            console.log(data.query.pages[i].title);
+            console.log(data.query.pages[i].pageid);
+            var wikiDetails = document.createElement('ul');
+            var wikiTitle = document.createElement('li');
+            var wikiPage = document.createElement('button');
+            wikiPage.className = "button is-danger is-light mt-3";
+            wikiPage.textContent = data.query.pages[i].title;
 
-    function getWikiResponse() {
-        var wikiApi = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=%Wolverine%";
-
-        fetch(wikiApi)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-        })
+            wikiContainer.appendChild(wikiDetails);
+            wikiDetails.appendChild(wikiTitle);
+            wikiTitle.appendChild(wikiPage);
+            saveWiki(data.query.pages[i].title);
+        }
     }
+
+    var saveWiki = function(wiki) {
+        if (wikiResults.indexOf(wiki) !== -1){
+            return;
+        }
+        wikiResults.push(wiki);
+        localStorage.setItem("wiki", JSON.stringify(wikiResults));
+    }
+    //     fetch(wikiApi)
+    //     .then(function(response) {
+    //         return response.json();
+    //     })
+    //     .then(function (data) {
+    //         console.log(data);
+    //     })
+    // }
 
    
 
   getMarvelResponse();
 
-  getWikiResponse();
+  //getWikiResponse();
+  xhr.send();
 
