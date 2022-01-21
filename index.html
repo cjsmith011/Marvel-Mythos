@@ -5,64 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <link rel="stylesheet" src="assets/css/design.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" src="assets/css/design.css">
+    
     <title>Marvel Mythos</title>
 </head>
 <body>
-    <section class = "hero is-link">
-        <div class= "hero-body">
-            <figure class="media-center">
-            <p class="image is-50x50">
-                <img src="assets/images/The_Marvel_Universe.png">
-            </p>
-        </figure>
-            <p class="title">Welcome to Marvel Mythos</p>
-            <p class="subtitle">Single source reference for all your favorite Marvel heroes!</p>
-        </div>
-    </section>
 
-    <section>
+    <header class="has-background-black">
+            <h1 class="title is-1 has-text-danger">Welcome to Marvel Mythos</h1>
+            <h2 class="subtitle is-2 has-text-danger">Single source reference for all your favorite Marvel heroes!</h2>
+            <nav class="navbar is-black" role="navigation" aria-label="main-navigation">
+                <div class="nav-brand">
+                    <a class="nav-item ">
+                        <img src="assets/images/marvel-thumbnail.png" alt="Marvel" width="112" height="15">
+                    </a>
+
+                </div>
+
+
+            </nav>
+    </header>
+   <section>
     <div class = "container">
     <div class = "columns">
         <div class="column is-one-quarter"><p class="title is-3 text-strong">Choose your favorite!</p>
             <div class="ui-widget">
                 <label for="tags">Heroes: </label>
                 <input id="tags" class="input is-danger" type="text" placeholder="Your fave mutant here">
-                <button class="submit" type="submit" placeholder="submit">submit</button>
+                <button class="btn-submit" type="submit" placeholder="submit" id="submit">submit</button>
             </div>
+            <figure class="image is-16by9">
+                <iframe class="has-ratio" width="640" height="360" src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0" allowfullscreen></iframe>
+              </figure>
 
 
+        <div class="columns">
+        
 
-
-
-
-
-            <!--<div class = "buttons">
-                <button class="button is-link is-outlined is-fullwidth" id = "Wolverine">Wolverine</button>
-                <button class="button is-link is-outlined is-fullwidth" id = "Hulk">Hulk</button>
-                <button class="button is-link is-outlined is-fullwidth" id = "Jean Grey">Jean Grey</>
-                <button class="button is-link is-outlined is-fullwidth" id = "Spiderman">Spiderman</button>
-                <button class="button is-link is-outlined is-fullwidth" id = "Daredevil">Daredevil</button>
-                <button class="button is-link is-outlined is-fullwidth" id = "Storm">Storm</button>
-                <button class="button is-link is-outlined is-fullwidth" id = "Elektra">Electra</button>
-                <button class="button is-link is-outlined is-fullwidth" id = "Beast">Beast</button>
-                <button class="button is-link is-outlined is-fullwidth" id = "Black Widow">Black Widow</button>
-                <button class="button is-link is-outlined is-fullwidth" id = "Shang-Chi">Shang-Chi</button>  
-            </div> -->
         </div>
-        <div class="column is-one-quarter">This is for the character image
+        <div class="column is-one-quarter">The character
             <img src="https://static.wikia.nocookie.net/marveldatabase/images/e/e4/Avengers_Vol_8_42_Black_History_Month_Variant_Textless.jpg/revision/latest/scale-to-width-down/1000?cb=20210127113741">
         </div>
-        <div class="column is-one-quarter">This is for the pre-set search options</div>
-        <div class="column is-one-quarter">This is for wiki results
-            <iframe src="https://marvel.fandom.com/wiki/Eric_Brooks_(Earth-616)" frameborder="0"></iframe>
+        <div class="column is-one-quarter">wikipedia
+            <iframe src="https://en.wikipedia.org/wiki/Vampire" frameborder="0" width="300" height="500"></iframe>
         </div>
-     </div>
-    </div>
+        <div class="column is-one-quarter">Marvel
+            <iframe src="https://marvel.fandom.com/wiki/Eric_Brooks_(Earth-616)" frameborder="0" width="300" height="500"></iframe>
+        </div>
+        </div>
+        </div>
+        </div>
     </section>
+
     
 
     
