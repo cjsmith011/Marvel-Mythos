@@ -12,31 +12,11 @@ $("#submit").on("click", function (event) {
   var storeArr = [];
   storeArr.push(textContent);
   localStorage.setItem('charSearch', JSON.stringify(storeArr))
-  
-  console.log(storeArr[0]);
 
 
   findCharacter(userInput);
 });
 
-function getMarvelResponse() { 
-    var characterId ='1009718'; 
-    // wolverine
-    
-      $.getJSON(url, {
-              ts: ts,
-              apikey: PUBLIC_KEY,
-              hash: hash,
-              characters: characterId
-                })
-          .done(function(data) {      
-    
-        console.log(data);
-        })
-            .fail(function(err){            
-            console.log(err);    
-        });
-    };
 
     function getWikiResponse() {
         var wikiApi = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=%Wolverine%";
@@ -66,11 +46,11 @@ function findCharacter(userInput){
     var charNameDes = document.getElementById('characters');
     var charPath = data.data.results[0];
 
-    if(charPath.description=""){
+    if(charPath.description===""){
       charNameDes.innerHTML=
     "<div class=block><h2>"+data.data.results[0].name+
     "<h2><figure><img src="+data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension+
-    "></figure><p>"+data.data.results[0].description+"</p>"
+    "></figure><p>"+data.data.results[0].id+"</p>"
     "<div>";
 
     }else{
@@ -81,17 +61,11 @@ function findCharacter(userInput){
     "<div>";
     }
 
-
-  
 console.log(data);
-console.log(data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension);
 })
     .fail(function(err){            
     console.log(err);    
 });
     };
-
-
-  //getMarvelResponse();
 
  getWikiResponse();
