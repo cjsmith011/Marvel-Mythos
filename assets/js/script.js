@@ -11,43 +11,18 @@ $("#submit").on("click", function (event) {
   var textContent = $(this).siblings("input").val();
   var storeArr = [];
   storeArr.push(textContent);
-  localStorage.setItem('charSearch', JSON.stringify(storeArr))
-  //console.log(storeArr[0]);
-
-
+  localStorage.setItem('charSearch', JSON.stringify(storeArr));
   findCharacter(userInput);
+  const origin = "https://en.wikipedia.org";
+  const url = `${origin}/w/api.php?action=query&origin=*&format=json&list=search&srsearch=${userInput}&srlimit=5`
+  fetch(url).then(function (data) {
+    return data.json()
+  
+  }).then(displayData).catch(function (error) {
+    console.log(error);
+
+  })
 });
-
-function getMarvelResponse() { 
-    var characterId ='1009718'; 
-    // wolverine
-    
-      $.getJSON(url, {
-              ts: ts,
-              apikey: PUBLIC_KEY,
-              hash: hash,
-              characters: characterId
-                })
-          .done(function(data) {      
-    
-        console.log(data);
-        })
-            .fail(function(err){            
-            console.log(err);    
-        });
-    };
-
-    function getWikiResponse() {
-        var wikiApi = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=%Wolverine%";
-
-        fetch(wikiApi)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-        })
-    }
 
 function findCharacter(userInput){
 
@@ -65,32 +40,39 @@ function findCharacter(userInput){
     var charNameDes = document.getElementById('characters');
     var charPath = data.data.results[0];
 
-    if(charPath.description=""){
+    if(charPath.description===""){
       charNameDes.innerHTML=
     "<div class=block><h2>"+data.data.results[0].name+
     "<h2><figure><img src="+data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension+
-    "></figure><p>"+data.data.results[0].description+"</p>"
+    "></figure><p>"+data.data.results[0].id+"</p>"
     "<div>";
 
     }else{
-    charNameDes.innerHTML=
+      charNameDes.innerHTML=
     "<div class=block><h2>"+data.data.results[0].name+
     "<h2><figure><img src="+data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension+
     "></figure><p>"+data.data.results[0].description+"</p>"
     "<div>";
     }
 
-
-  
 console.log(data);
-console.log(data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension);
 })
     .fail(function(err){            
     console.log(err);    
 });
     };
 
-
-  //getMarvelResponse();
-
- getWikiResponse();
+function displayData(data) {
+  let result = data.query.search;
+  console.log(result);
+  let output = '';
+  result.forEach(function (item) {
+  output += `<li class="search-item box">
+        <h2 class="search-item__title">${item.title}</h2>
+        <p class="search-item__text">${item.snippet}</p>
+        <a href="http://en.wikipedia.org/?curid=${item.pageid}" class="search-item__link main-btn" target="_blank">read more ...</a>
+        </li>`
+      })
+      document.querySelector('.wikiSpot').innerHTML = output;
+     
+     }
