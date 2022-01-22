@@ -94,4 +94,3 @@ console.log(data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbna
   //getMarvelResponse();
 
  getWikiResponse();
-
