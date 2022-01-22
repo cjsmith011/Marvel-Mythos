@@ -11,9 +11,8 @@ $("#submit").on("click", function (event) {
   var textContent = $(this).siblings("input").val();
   var storeArr = [];
   storeArr.push(textContent);
-  localStorage.setItem('charSearch', JSON.stringify(storeArr))
-  
-  console.log(storeArr[0]);
+  localStorage.setItem('charSearch', JSON.stringify(storeArr));
+  //console.log(storeArr[0]);
 
 
   findCharacter(userInput);
