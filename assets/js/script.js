@@ -67,7 +67,7 @@ function displayData(data) {
   console.log(result);
   let output = '';
   result.forEach(function (item) {
-  output += `<li class="search-item">
+  output += `<li class="search-item box">
         <h2 class="search-item__title">${item.title}</h2>
         <p class="search-item__text">${item.snippet}</p>
         <a href="http://en.wikipedia.org/?curid=${item.pageid}" class="search-item__link main-btn" target="_blank">read more ...</a>

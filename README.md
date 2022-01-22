@@ -11,6 +11,6 @@ Deployed site: https://cjsmith011.github.io/Marvel-Mythos/
 
 Github repo: https://github.com/cjsmith011/Marvel-Mythos.git
 
-Site image: 
+Site image: ![deployed site image](https://user-images.githubusercontent.com/91625739/150654273-438736c8-8a24-41ad-b257-74e9ef779393.PNG)
 
 Contributors: NathanG5, amartinezjr7, doctordutch, cjsmith011
