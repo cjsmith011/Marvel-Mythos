@@ -1,69 +1,3 @@
-$(function() {
-    var availableTags = [
-      { value:"https://marvel.fandom.com/wiki/Eric_Brooks_(Earth-616)",
-       label:"Blade"},
-      {value:"",
-        label:"Black Panther"},
-      {value:"",
-       label: "Ant-Man"},
-      {value:"",
-       label:"The Incredible Hulk"},
-      {value:"",
-       label: "Captain America"},
-      {value:"",
-       label: "Nick Fury"},
-      {value:"",
-       label: "Daredevil"},
-      {value:"",
-       label: "Gambit"},
-      {value:"",
-        label:"Spider-Man"},
-      {value:"",
-       label: "Thor"},
-      {value:"",
-       label: "Iron Man"},
-      {value:"",
-       label: "The Thing"},
-      {value:"",
-       label: "Wolverine"},
-      {value:"",
-      label:"Storm"},
-      {value:"",
-        label:"Captain Marvel"},
-      {value:"",
-        label:"Black Widow"},
-      {value:"",
-        label:"War Machine"},
-      {value:"",
-       label: "Groot"},
-      {value:"",
-       label: "Deadpool"},
-      {value:"",
-        label:"Cyclops"},
-      {value:"",
-        label:"Silver SUrfer"},
-      {value:"",
-       label: "Human Torch"},
-      {value:"",
-        label:"Nightcrawler"},
-      {value:"",
-       label: "Punisher"},
-      {value:"",
-        label:"Invisible Woman"},
-      {value:"",
-        label:"Rogue"},
-      {value: "",
-        label:"Professor X"}
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags,
-      select: function( event, ui ) { 
-        window.location.href = ui.item.value;
-      }
-    });
-  } )
-
-
 var PRIV_KEY = "96b6dcb17afd3a92bf2cb5412a5efad74a978e6d";
 var PUBLIC_KEY = "14ba62392acaeee875f06ebee23b5c60";
 var url = 'http://gateway.marvel.com/v1/public/comics';
@@ -129,11 +63,22 @@ function findCharacter(userInput){
         })
   .done(function(data) { 
     var charNameDes = document.getElementById('characters');
+    var charPath = data.data.results[0];
+
+    if(charPath.description=""){
+      charNameDes.innerHTML=
+    "<div class=block><h2>"+data.data.results[0].name+
+    "<h2><figure><img src="+data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension+
+    "></figure><p>"+data.data.results[0].description+"</p>"
+    "<div>";
+
+    }else{
     charNameDes.innerHTML=
     "<div class=block><h2>"+data.data.results[0].name+
     "<h2><figure><img src="+data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension+
     "></figure><p>"+data.data.results[0].description+"</p>"
     "<div>";
+    }
 
 
   
