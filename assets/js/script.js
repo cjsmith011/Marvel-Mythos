@@ -12,7 +12,8 @@ $("#submit").on("click", function (event) {
   var storeArr = [];
   storeArr.push(textContent);
   localStorage.setItem('charSearch', JSON.stringify(storeArr))
-  //console.log(storeArr[0]);
+  
+  console.log(storeArr[0]);
 
 
   findCharacter(userInput);
@@ -36,29 +37,18 @@ function getMarvelResponse() {
             console.log(err);    
         });
     };
-    
-    var xhr = new XMLHttpRequest();
-    
-    var wikiApi = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=%Wolverine%";
 
     function getWikiResponse() {
         var wikiApi = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=%Wolverine%";
 
-    var saveWiki = function(wiki) {
-        if (wikiResults.indexOf(wiki) !== -1){
-            return;
-        }
-        wikiResults.push(wiki);
-        localStorage.setItem("wiki", JSON.stringify(wikiResults));
+        fetch(wikiApi)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        })
     }
-    //     fetch(wikiApi)
-    //     .then(function(response) {
-    //         return response.json();
-    //     })
-    //     .then(function (data) {
-    //         console.log(data);
-    //     })
-    // }
 
 function findCharacter(userInput){
 
@@ -84,7 +74,7 @@ function findCharacter(userInput){
     "<div>";
 
     }else{
-    charNameDes.innerHTML=
+      charNameDes.innerHTML=
     "<div class=block><h2>"+data.data.results[0].name+
     "<h2><figure><img src="+data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension+
     "></figure><p>"+data.data.results[0].description+"</p>"
@@ -104,4 +94,4 @@ console.log(data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbna
 
   //getMarvelResponse();
 
- getWikiResponse();}
+ getWikiResponse();

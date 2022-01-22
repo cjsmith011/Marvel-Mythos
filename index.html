@@ -10,7 +10,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
     <link rel="stylesheet" src="assets/css/design.css">
-    <link rel="icon" href="/assets/images/marvel-thumbnail.png">
     <title>Marvel Mythos</title>
 </head>
 <body>
@@ -38,7 +37,7 @@
         <div class="column is-one-half">
             <!--<div class="ui-widget">-->
                 <label for="tags"><p class="title is-3">Heroes: </p></label>
-                <input id="tags" class="input is-danger" type="text" placeholder="Type in your fave mutant here">
+                <input id="searchChar" class="input is-danger" type="text" placeholder="Type in your fave mutant here">
                 <button class="btn-submit" type="submit" placeholder="submit" id="submit">submit</button>
             </div>
         <div class="column is-one-half" id="wikiSpot">Wiki Results</div>
@@ -47,10 +46,8 @@
     <!--this is the row for the marvel image and info-->     
     <div class="columns">
         
-        <div class="column is-one-half" id="marvelImageSpot">Marvel Image</div>
+        <div class="column is-one-half" id="characters">Marvel Image</div>
         
-       
-        <div class="column is-one-half" id="marvelInfoSpot">Marvel Info</div>
     </div>
     </div>
     </section>
@@ -67,9 +64,6 @@
 <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <figure class ="image is-48x48">
-          <img src="assets/images/marvel-thumbnail.png">
-        </figure>
 
         <strong>Marvel Mythos</strong> by Alex, Carlie, Justin & Nathan.<br>
         <ion-icon name="body-outline"></ion-icon>
