@@ -44,9 +44,9 @@ function findCharacter(userInput){
       charNameDes.innerHTML=
     "<div class=block><h2>"+data.data.results[0].name+
     "<h2><figure><img src="+data.data.results[0].thumbnail.path+"."+data.data.results[0].thumbnail.extension+
-    "></figure><p>"+data.data.results[0].id+"</p>"
+    "></figure><p><a href="+data.data.results[0].urls[0].url+">More Resources</a></p>"
     "<div>";
-
+  
     }else{
       charNameDes.innerHTML=
     "<div class=block><h2>"+data.data.results[0].name+
